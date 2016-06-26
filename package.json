@@ -1,0 +1,32 @@
+{
+  "name": "blog_peyton",
+  "version": "0.1.0",
+  "description": "personal blog",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaopeifei/blog.git"
+  },
+  "author": "peyton zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaopeifei/blog/issues"
+  },
+  "homepage": "https://github.com/zhaopeifei/blog#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express3-handlebars": "^0.5.2",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-csscomb": "^3.0.7",
+    "gulp-sass": "^2.3.2"
+  }
+}
