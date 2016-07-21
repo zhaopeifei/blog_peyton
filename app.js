@@ -5,6 +5,8 @@ var logger = require('morgan'); //http request logger
 var bodyParser = require('body-parser');
 
 var homepage = require('./routes/homepage');
+var blogs = require('./routes/blogs');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -34,6 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/favicon.ico',express.static('favicon.ico'));
 app.use('/', homepage);
+app.use('/blogs', blogs);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
