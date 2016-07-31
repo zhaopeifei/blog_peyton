@@ -1,8 +1,9 @@
-{{#each posts}}
-    <div>
-        <h1>{{title}}</h1>
-        <p>{{createDate}}<p>
-        <p>{{updateDate}}</p>
-        <div>{{{content}}}</div>
-    </div>
-{{/each}}
+<script type="text/javascript" src="/bower_components/kity/dist/kity.min.js"></script>
+<script id="minder-view" type="application/kityminder" minder-data-type="json">{{{minderData}}}</script>
+
+<div id="blogsContainer">
+</div>
+
+<script src="/bower_components/marked/lib/marked.js"></script>
+<script type="text/javascript" src="/bower_components/kityminder-core/dist/kityminder.core.min.js"></script>
+<script type="text/javascript" src="/javascripts/blogs.js"></script>

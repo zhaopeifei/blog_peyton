@@ -5,9 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="ID=Edge">
         <title>暗流</title>
         <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-        <link rel="stylesheet" href="/css/main_peyton.css">
-        <link rel="stylesheet" href="/css/{{pageName}}.css">
-        <link href='http://api.youziku.com/webfont/CSS/575f95e6f629d809243c5876' rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="/css/main.css">
+        {{#each sources}}
+        <link rel="stylesheet" href={{source}}>
+        {{/each}}
     </head>
 
     <body>

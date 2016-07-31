@@ -1,26 +1,48 @@
-<main id="appMain">
-    <div class="nav-editor">
-        <input id="id" type="hidden">
-        
-        <label for="category">类别：</label>
-        <select id="category"></select>
 
-        <label for="title">标题：</label>
-        <select id="title"></select>
-
-        <button class="btn" id="save">保存</button>
-        <button class="btn" id="delete">删除</button>
+<main id="appMain"  ng-app="myModule">
+    <div id="minder" ng-controller="MinderController">
+        <kityminder-editor on-init="initEditor(editor, minder)" ng-keyup="saveMinderData($event)"></kityminder-editor>
     </div>
-    <div class="content-editor">
-        <div class="editor">
-            <textarea id="mkEditor">
-            </textarea>
+
+    <div id="blogsContainer" ng-controller="BlogController">
+        <div class="blog-container" ng-repeat="blog in blogs">
+            <div class="blog-editor" style="display:none">
+                <textarea class="form-control" value="\{{blog.content}}" ng-keyup="updateBlog($event)"></textarea>
+            </div>
+            <div class="blog-viewer" id="\{{blog.id}}">
+                <article ng-bind-html="blog.html"></article>
+                <div class="blog-btns">
+                    <button class="blog-change btn btn-info" ng-click="blogEditor($event)">修改</button>
+                    <button class="blog-delete btn btn-danger" ng-click="deleteBlog($event, $parent)">删除</button>
+                </div>
+            </div>
         </div>
-        <div class="editor">
-            <article id="mkViewer"></article>
-        </div>
+        <h1 class="editor-title" ng-click="createBlog($event)">新建</h1>
     </div>
 </main>
 
+<!-- bower:js -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="https://code.angularjs.org/1.5.8/angular-sanitize.min.js"></script>>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/bower_components/codemirror/lib/codemirror.js"></script>
+<script src="/bower_components/codemirror/mode/xml/xml.js"></script>
+<script src="/bower_components/codemirror/mode/javascript/javascript.js"></script>
+<script src="/bower_components/codemirror/mode/css/css.js"></script>
+<script src="/bower_components/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script src="/bower_components/codemirror/mode/markdown/markdown.js"></script>
+<script src="/bower_components/codemirror/addon/mode/overlay.js"></script>
+<script src="/bower_components/codemirror/mode/gfm/gfm.js"></script>
+<script src="/bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+<script src="/bower_components/marked/lib/marked.js"></script>
+<script src="/bower_components/kity/dist/kity.min.js"></script>
+<script src="/bower_components/hotbox/hotbox.js"></script>
+<script src="/bower_components/json-diff/json-diff.js"></script>
+<script src="/bower_components/kityminder-core/dist/kityminder.core.min.js"></script>
+<script src="/bower_components/color-picker/dist/color-picker.min.js"></script>
+<script src="/bower_components/kityminder-editor/dist/kityminder.editor.min.js"></script>
+<!-- endbower -->
+
 <script src="/javascripts/blogs_peyton.js" type="text/javascript"></script>
-<script src="/javascripts/markdown.js" type="text/javascript"></script>

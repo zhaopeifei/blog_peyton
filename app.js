@@ -15,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 var exphbs = require('express3-handlebars').create({
     extname: '.hbs',
     defaultLayout: 'main'
+    //helpers: 
 });
 app.engine('hbs', exphbs.engine);
 app.set('view engine', 'hbs');

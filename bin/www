@@ -8,11 +8,20 @@ var app = require('../app');
 var debug = require('debug')('blog:server');
 var http = require('http');
 
+//peyton https
+var fs = require('fs');
+var https = require('https');
+var options = {
+  key: fs.readFileSync('key/server.key'),
+  cert: fs.readFileSync('key/server.crt')
+};
+var httpServer = https.createServer(options, app).listen(443);
+
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
 /**

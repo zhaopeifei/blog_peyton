@@ -1,20 +1,12 @@
-<div class="login-form">
-    <form action="/login" method="post">
-        <fieldset>
-            {{#if error}}
-                <p>暗号错误，再输一次~</p>
-            {{/if}}
-            <h3>快输入接头暗号~</h3>
-            <div class="fields">
-                <p class="row">
-                    <label for="password">接头暗号：</label>
-                    <input id="password" name="password" type="password">
-                </p>
-            </div>
-            <p class="row">
-                <input class="btn" type="submit" value="ENTER">
-                <input class="btn" type="button" value="返回" onclick="window.location.replace('/')">
-            </p>
-        </fieldset>
-    </form>
-</div>
+
+<form action="/login" method="post">
+    {{#if error}}
+        <p>暗号错误，再输一次~</p>
+    {{/if}}
+    <div class="form-group">
+        <label for="password">接头暗号：</label>
+        <input class="form-control" id="password" name="password" type="password">
+    </div>
+    <input class="btn btn-primary" type="submit" value="ENTER">
+    <input class="btn btn-danger" type="button" value="返回" onclick="window.location.replace('/')">
+</form>
