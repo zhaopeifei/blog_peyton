@@ -7,7 +7,7 @@
     <div id="blogsContainer" ng-controller="BlogController">
         <div class="blog-container" ng-repeat="blog in blogs">
             <div class="blog-editor" style="display:none">
-                <textarea class="form-control" value="\{{blog.content}}" ng-keyup="updateBlog($event)"></textarea>
+                <textarea class="form-control" ng-keyup="updateBlog($event)">\{{blog.content}}</textarea>
             </div>
             <div class="blog-viewer" id="\{{blog.id}}">
                 <article ng-bind-html="blog.html"></article>
