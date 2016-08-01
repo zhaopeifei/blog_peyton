@@ -1,0 +1,67 @@
+<div id="profileContainer"></div>
+<script type="text/javascript">
+    (function(){
+        var hrefBase = "https://codepen.io/peytonzhao/full/";
+        var profiles = [
+            { 
+                srcUrl: '/sources/simon.jpg', 
+                name: 'Simon Game', 
+                description: '这是一个考察记忆力的小游戏。四个按钮会被安装特定的顺序按下，然后玩家需要记下这个顺序，并按照该顺序一下按亮按钮。能记住20个便取得胜利。游戏分为简单和困难模式，另外不同的按钮会有不同的声音。', 
+                hrefUrl: hrefBase + 'xOWGQv/'
+            },{ 
+                srcUrl: '/sources/TicTacToe.jpg', 
+                name: 'TicTacToe Game', 
+                description: '这是一个益智小游戏，一方执“O”先手棋，一方执“X”后手棋，玩家与电脑依次下棋。水平、垂直或倾斜方向连成3个即算胜利。', 
+                hrefUrl: hrefBase+'vKZRoB'
+            },{ 
+                srcUrl: '/sources/Timer.jpg', 
+                name: '番茄时钟', 
+                description: '这是一个番茄时钟，用于提高工作效率。可以将时间分为工作时间、休息时间，时间均可自由调整。时间的流逝还是很有趣的。', 
+                hrefUrl: hrefBase+'NAadOR'
+            },{ 
+                srcUrl: '/sources/Calculator.jpg', 
+                name: '计算器', 
+                description: '基本的计算器，可以进行加减乘除、清零、回删等功能', 
+                hrefUrl: hrefBase + 'ZOXEYZ'
+            },{ 
+                srcUrl: '/sources/WikiViwer.jpg', 
+                name: '维基词条搜索工具', 
+                description: '输入要查询的维基词条，显示相关词条。', 
+                hrefUrl: hrefBase+'BzYPyA'
+            },{ 
+                srcUrl: '/sources/TwitchApp.jpg', 
+                name: 'Twitch主播查看器', 
+                description: '显示Twitch主播的在线/离线状态，如果在线，则显示主播在直播的游戏及有关信息', 
+                hrefUrl: hrefBase+'rLdBLd'
+            }
+        ];
+
+        var fragement = document.createDocumentFragment();
+        profiles.forEach(function(profile){
+            
+            var figure = document.createElement('figure');
+
+            var img = document.createElement('img');
+            img.setAttribute("src",profile.srcUrl);
+            figure.appendChild(img);
+              
+            var name = document.createTextNode(profile.name);
+            var figcaption = document.createElement('figcaption');
+            figcaption.appendChild(name);
+            figure.appendChild(figcaption);
+
+            var description = document.createTextNode(profile.description);
+            var p = document.createElement('p');
+            p.appendChild(description);
+            figure.appendChild(p);
+
+            var link = document.createElement('a');
+            link.setAttribute('href',profile.hrefUrl);
+            link.appendChild(figure);
+
+            fragement.appendChild(link);
+        });
+
+        document.getElementById('profileContainer').appendChild(fragement);
+    })();
+</script>

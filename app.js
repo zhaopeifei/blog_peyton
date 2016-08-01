@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 
 var homepage = require('./routes/homepage');
 var blogs = require('./routes/blogs');
+var profile = require('./routes/profile');
 var login = require('./routes/login');
 
 var app = express();
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/favicon.ico',express.static('favicon.ico'));
 app.use('/', homepage);
 app.use('/blogs', blogs);
+app.use('/profile', profile);
 app.use('/login', login);
 
 // catch 404 and forward to error handler
