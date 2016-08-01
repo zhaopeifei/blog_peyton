@@ -56,7 +56,15 @@
         var blogsHtml = '';
 
         blogs.forEach(function(blog){
-            var html = '<div class="blog-container"><article>' + marked(blog.content) + '</article></div>';
+            var createTime = new Date(blog.createDate);
+            var updateTime = new Date(blog.updateDate);
+            var html = '<p class="time-line">'
+                    + '<time datetime="'+blog.createDate+'">' + createTime.toLocaleDateString() + '</time> 创建；  '
+                    + '<time datetime="'+blog.updateDate+'">' + updateTime.toLocaleDateString() + '</time>更新'
+                    + '</p>'
+                    + '<div class="blog-container">'
+                        + '<article>' + marked(blog.content) + '</article>'
+                    + '</div>';
             blogsHtml += html;
         });
 

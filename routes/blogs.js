@@ -4,11 +4,12 @@ var router = express.Router();
 var Models = require('../database/db.js');
 
 router.get('/',function(req, res){
-    Models.Minder.findOne(function(err,minder){
+    Models.Minder.findOne({name: 'minder'}, function(err,minder){
         if(err){
             console.log(err);
             res.status(400).send('{"show":"数据未成功获取~"}');
         }else{
+            console.log(minder);
             res.render('blogs',{ sources: [
                     { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
                     { source: "/bower_components/kityminder-core/dist/kityminder.core.css" },
@@ -34,7 +35,7 @@ router.get('/peyton', function(req, res, next){
 
 //获取脑图数据
 router.get('/minder', function(req, res, next){
-    Models.Minder.findOne(function(err,minder){
+    Models.Minder.findOne({name: 'minder'}, function(err,minder){
         if(err){
             console.log(err);
             res.status(400).send('{"show":"数据未成功获取~"}');
@@ -61,7 +62,7 @@ router.post('/minder/peyton', function(req, res, next){
 
 //更新脑图数据
 router.put('/minder/peyton', function(req, res, next){
-    Models.Minder.update({name: '知识图谱'}, {
+    Models.Minder.update({name: 'minder'}, {
         content: JSON.stringify(req.body)
     },{},function(err){
         if(err){

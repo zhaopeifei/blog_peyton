@@ -42,7 +42,9 @@ myModule.controller('BlogController', function($scope, $http) {
                         $scope.blogs.push({ 
                             id: value._id,
                             content: value.content,
-                            html: marked(value.content)
+                            html: marked(value.content),
+                            createDate: res.data.createDate,
+                            updateDate: res.data.updateDate
                         });
                     },function(res){
                         alert(res.data.show);
@@ -75,7 +77,9 @@ myModule.controller('BlogController', function($scope, $http) {
                             $scope.blogs.push({
                                 id: res.data._id,
                                 content: res.data.content,
-                                html: ''
+                                html: marked(res.data.content),
+                                createDate: res.data.createDate,
+                                updateDate: res.data.updateDate
                             });
                         },function(res){
                             alert(res.data.show);
