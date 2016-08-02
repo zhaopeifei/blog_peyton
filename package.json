@@ -19,6 +19,7 @@
   "homepage": "https://github.com/zhaopeifei/blog#readme",
   "dependencies": {
     "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "express3-handlebars": "^0.5.2",
     "mongoose": "^4.5.2",

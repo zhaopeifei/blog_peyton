@@ -22,6 +22,8 @@ var exphbs = require('express3-handlebars').create({
 app.engine('hbs', exphbs.engine);
 app.set('view engine', 'hbs');
 
+app.use(require('cookie-parser')('test'));
+
 //test
 app.use(function(req, res, next) {
     res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
@@ -44,7 +46,7 @@ app.use('/profile', profile);
 app.use('/login', login);
 
 app.use('/comments', comments);
-app.use('/collections', comments)
+app.use('/collections', comments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
