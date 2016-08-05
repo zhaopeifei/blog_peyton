@@ -9,7 +9,6 @@ router.get('/',function(req, res){
             console.log(err);
             res.status(400).send('{"show":"数据未成功获取~"}');
         }else{
-            console.log(minder);
             res.render('blogs',{ sources: [
                     { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
                     { source: "/bower_components/kityminder-core/dist/kityminder.core.css" },
