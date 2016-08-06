@@ -9,6 +9,7 @@ var blogs = require('./routes/blogs');
 var profile = require('./routes/profile');
 var login = require('./routes/login');
 var comments = require('./routes/comments');
+var page = require('./routes/page');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/login', login);
 
 app.use('/comments', comments);
 app.use('/collections', comments);
+app.use('/page', page);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
