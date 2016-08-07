@@ -1,0 +1,61 @@
+<script src="/bower_components/marked/lib/marked.js"></script>
+
+
+<main id="appMain">
+    <p class="time-line">
+        <time datetime="{{createDate}}">{{createDate}}</time>创建
+        <time datetime="{{updateDate}}">{{updateDate}}</time>更新
+    </p>
+    <div class="blog-container">
+        <div class="blog-editor" style="display:none">
+            <textarea class="form-control" id="blogEditor">{{content}}</textarea>
+        </div>
+        <div class="blog-viewer" id="{{id}}">
+            <article>{{{html}}}</article>
+            <div class="blog-btns">
+                <button class="blog-change btn btn-info" id="btnChange">修改</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+(function(){
+    document.getElementById('btnChange').addEventListener('click', function(event){
+        var editor = event.target.parentNode.parentNode.previousElementSibling;
+        if(editor.style.display === "none"){
+            editor.style.display = "block";
+            event.currentTarget.innerHTML = "保存";
+        }else{
+            editor.style.display = "none";
+            event.currentTarget.innerHTML = "修改";
+        }
+    });
+
+    document.getElementById('blogEditor').addEventListener('keyup', function(event){
+        if(event.key === "Enter"){
+            var editor = event.currentTarget;
+            var viewer = editor.parentNode.nextElementSibling;
+            viewer.firstElementChild.innerHTML = marked(editor.value);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('PUT', '/page/peyton', true);
+
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status !== 200){
+                        alert('保存失败');
+                    }
+                }
+            };
+            
+            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+            xhr.send(JSON.stringify({
+                id: viewer.id,
+                content: editor.value
+            }));
+        }
+    });
+})();
+</script>

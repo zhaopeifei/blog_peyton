@@ -125,7 +125,7 @@ myModule.controller('BlogController', function($scope, $http) {
         $http.delete('/blogs/blog/peyton?id='+blogId).success(function(res){
             for(var i=0,len=$scope.blogs.length; i<len; i++){
                 if($scope.blogs[i].id === blogId){
-                    $scope.blogs.splice(i,i);
+                    $scope.blogs.splice(i,1);
                     break;
                 }
             }
