@@ -46,7 +46,7 @@ router.put('/peyton', function(req, res, next){
 //获取博文
 router.get('/:title', function(req,res,next){
     
-    Models.Post.findOne({ title: req.params('title') }, function(err, post){
+    Models.Post.findOne({ title: req.param('title') }, function(err, post){
         if(err){
             console.log(err);
             res.status(400).send('{"show":"数据未成功获取~"}');
