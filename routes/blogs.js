@@ -10,8 +10,7 @@ router.get('/',function(req, res){
             res.status(400).send('{"show":"数据未成功获取~"}');
         }else{
             res.render('blogs',{ sources: [
-                    { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
-                    { source: "/bower_components/kityminder-core/dist/kityminder.core.css" },
+                    { source: "https://cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" },
                     { source: "/css/blogs.css"}
                 ], minderData: minder.content });
         }
@@ -26,8 +25,8 @@ router.get('/peyton', function(req, res, next){
     }
 
     res.render('blogs_peyton', { layout: 'main_peyton', sources: [
-            { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
-            { source: "/bower_components/codemirror/lib/codemirror.css" },
+            { source: "https://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" },
+            { source: "https://cdn.bootcss.com/codemirror/4.8.0/codemirror.min.css" },
             { source: "/bower_components/hotbox/hotbox.css" },
             { source: "/bower_components/kityminder-core/dist/kityminder.core.css" },
             { source: "/bower_components/color-picker/dist/color-picker.min.css" },
