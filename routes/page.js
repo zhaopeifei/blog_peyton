@@ -4,6 +4,32 @@ var router = express.Router();
 
 var Models = require('../database/db.js');
 
+//获取博文
+router.get('/:title', function(req,res,next){
+    console.log(req.url);
+    Models.Post.findOne({ title: req.param('title') }, function(err, post){
+        if(err){
+            console.log(err);
+            res.status(400).send('{"show":"数据未成功获取~"}');
+        }else{
+            if(post){
+                res.render('page',{ sources: [
+                    { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
+                    { source: "/css/page.css"}
+                    ], url: req.url,
+                    title: post.title,
+                    content: marked(post.content),
+                    createDate: post.createDate.toLocaleDateString(),
+                    updateDate: post.updateDate.toLocaleDateString() });
+            }else{
+                res.status(400).send('{"show":请求的页面不存在~"}');
+            }
+            
+        }
+    });
+});
+
+//管理文章
 router.get('/:title/peyton', function(req,res,next){
     var cookie = req.signedCookies.signed_permit;
     if(cookie !== 'sudo'){
@@ -16,7 +42,7 @@ router.get('/:title/peyton', function(req,res,next){
             res.status(400).send('{"show":"数据未成功获取~"}');
         }else{
             if(post){
-                res.render('page_peyton',{ sources: [
+                res.render('page_peyton',{ layout: 'main_peyton', sources: [
                     { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
                     { source: "/css/blogs_peyton.css"}
                 ], id: post._id,
@@ -47,27 +73,5 @@ router.put('/peyton', function(req, res, next){
     });
 });
 
-//获取博文
-router.get('/:title', function(req,res,next){
-    console.log(req.params.title);
-    Models.Post.findOne({ title: req.param('title') }, function(err, post){
-        if(err){
-            console.log(err);
-            res.status(400).send('{"show":"数据未成功获取~"}');
-        }else{
-            if(post){
-                res.render('page',{ sources: [
-                    { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
-                    { source: "/css/blogs.css"}
-                    ], content: marked(post.content),
-                    createDate: post.createDate.toLocaleDateString(),
-                    updateDate: post.updateDate.toLocaleDateString() });
-            }else{
-                res.status(400).send('{"show":请求的页面不存在~"}');
-            }
-            
-        }
-    });
-});
 
 module.exports = router;

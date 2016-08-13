@@ -3,6 +3,7 @@ var router = express.Router();
 
 var Models = require('../database/db.js');
 
+//用户界面
 router.get('/',function(req, res){
     Models.Minder.findOne({name: 'minder'}, function(err,minder){
         if(err){
