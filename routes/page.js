@@ -15,7 +15,8 @@ router.get('/:title/peyton', function(req,res,next){
             console.log(err);
             res.status(400).send('{"show":"数据未成功获取~"}');
         }else{
-            res.render('page_peyton',{ sources: [
+            if(post){
+                res.render('page_peyton',{ sources: [
                     { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
                     { source: "/css/blogs_peyton.css"}
                 ], id: post._id,
@@ -23,6 +24,9 @@ router.get('/:title/peyton', function(req,res,next){
                 html: marked(post.content),
                 createDate: post.createDate.toLocaleDateString(),
                 updateDate: post.updateDate.toLocaleDateString() });
+            }else{
+                res.status(400).send('{"show":请求的页面不存在~"}');
+            }
         }
     });
 });
@@ -45,18 +49,23 @@ router.put('/peyton', function(req, res, next){
 
 //获取博文
 router.get('/:title', function(req,res,next){
-    
+    console.log(req.params.title);
     Models.Post.findOne({ title: req.param('title') }, function(err, post){
         if(err){
             console.log(err);
             res.status(400).send('{"show":"数据未成功获取~"}');
         }else{
-            res.render('page',{ sources: [
+            if(post){
+                res.render('page',{ sources: [
                     { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },
                     { source: "/css/blogs.css"}
-                ], content: marked(post.content),
-                createDate: post.createDate.toLocaleDateString(),
-                updateDate: post.updateDate.toLocaleDateString() });
+                    ], content: marked(post.content),
+                    createDate: post.createDate.toLocaleDateString(),
+                    updateDate: post.updateDate.toLocaleDateString() });
+            }else{
+                res.status(400).send('{"show":请求的页面不存在~"}');
+            }
+            
         }
     });
 });

@@ -97,7 +97,7 @@ myModule.controller('BlogController', function($scope, $http) {
             if(!minder.getSelectedNodes().length){
                 $http.put('/blogs/blog/peyton',{
                     id: container.children[1].id,
-                    title: editor.value.match(/.+/)[0],
+                    title: editor.value.match(/[^\[\]]+/)[0],
                     content: editor.value
                 }).then(function(res){
                             console.log(res.data.show);
@@ -108,7 +108,7 @@ myModule.controller('BlogController', function($scope, $http) {
                 $http.put('/blogs/blog/peyton',{
                     id: container.children[1].id,
                     category: minder.getSelectedNodes()[0].data.text,
-                    title: editor.value.match(/.+/)[0],
+                    title: editor.value.match(/[^\[\]]+/)[0],
                     content: editor.value
                 }).then(function(res){
                             console.log(res.data.show);
