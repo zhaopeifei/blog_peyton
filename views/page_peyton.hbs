@@ -39,7 +39,7 @@
             viewer.firstElementChild.innerHTML = marked(editor.value);
 
             var xhr = new XMLHttpRequest();
-            xhr.open('PUT', '/page/peyton', true);
+            xhr.open('PUT', '/page?user=peyton', true);
 
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === 4){

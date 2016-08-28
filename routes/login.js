@@ -15,7 +15,7 @@ router.get('/', function(req, res, next){
 router.post('/', function(req, res, next){
     if(req.body.password === "zhaopeifei"){
         res.cookie('signed_permit', 'sudo', { signed: true });
-        res.redirect('/blogs/peyton');
+        res.redirect('/blogs?user=peyton');
     }else{
         res.render('login', { sources: [
             { source: "/bower_components/bootstrap/dist/css/bootstrap.css" },

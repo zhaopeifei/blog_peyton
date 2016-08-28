@@ -16,7 +16,7 @@ myModule.controller('MinderController', function($scope,$http) {
 
     $scope.saveMinderData = function(event){
         if(event.key === 'Enter' || event.key === "Delete"){
-            $http.put('/blogs/minder/peyton',editor.minder.exportJson())
+            $http.put('/blogs/minder?user=peyton',editor.minder.exportJson())
                 .then(function(res){
                         console.log(res.data.show);
                     },function(res){
@@ -69,7 +69,7 @@ myModule.controller('BlogController', function($scope, $http) {
             alert('请选择脑图相应的节点');
         }
 
-        $http.post('/blogs/blog/peyton',{
+        $http.post('/blogs/blog?user=peyton',{
                     category: minder.getSelectedNodes()[0].data.text,
                     title: '',
                     content: ''
@@ -95,7 +95,7 @@ myModule.controller('BlogController', function($scope, $http) {
             viewer.innerHTML = marked(editor.value);
 
             if(!minder.getSelectedNodes().length){
-                $http.put('/blogs/blog/peyton',{
+                $http.put('/blogs/blog?user=peyton',{
                     id: container.children[1].id,
                     title: editor.value.match(/[^\[\]]+/)[0],
                     content: editor.value
@@ -105,7 +105,7 @@ myModule.controller('BlogController', function($scope, $http) {
                             alert(res.data.show);
                         });
             }else{
-                $http.put('/blogs/blog/peyton',{
+                $http.put('/blogs/blog?user=peyton',{
                     id: container.children[1].id,
                     category: minder.getSelectedNodes()[0].data.text,
                     title: editor.value.match(/[^\[\]]+/)[0],
@@ -122,7 +122,7 @@ myModule.controller('BlogController', function($scope, $http) {
     $scope.deleteBlog = function(event, scope){
         blogId = event.currentTarget.parentNode.parentNode.id;
 
-        $http.delete('/blogs/blog/peyton?id='+blogId).success(function(res){
+        $http.delete('/blogs/blog?user=peyton&id='+blogId).success(function(res){
             for(var i=0,len=$scope.blogs.length; i<len; i++){
                 if($scope.blogs[i].id === blogId){
                     $scope.blogs.splice(i,1);
