@@ -42,7 +42,7 @@ myModule.controller('BlogController', function($scope, $http) {
                         $scope.blogs.push({ 
                             id: value._id,
                             content: value.content,
-                            html: marked(value.content),
+                            html: marked(value.content).replace(/href="\/page\/[^"]*/g, '$&?user=peyton'),
                             createDate: res.data.createDate,
                             updateDate: res.data.updateDate
                         });
@@ -132,4 +132,3 @@ myModule.controller('BlogController', function($scope, $http) {
         });
     };
 });
-

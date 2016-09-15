@@ -85,3 +85,38 @@
             });
     });
 })();
+
+// var ajax = (function(){
+//     var request = function(method,url,data){
+//         return new Promise(function(resolve,reject){
+//             var xhr = new XMLHttpRequest();
+//             xhr.open(method, url, true);
+//             xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+//             xhr.send(JSON.stringify(data));
+
+//             xhr.onreadystatechange = function(){
+//                 if(xhr.readyState === 4){
+//                     if(/^2\d{2}/.test(xhr.status)){
+//                         resolve(JSON.parse(xhr.responseText));
+//                     }else if(/^(4|5)\d{2}/.test(xhr.status)){
+//                         reject(xhr.status + xhr.statusText);
+//                     }
+//                 }
+//             };
+//         });
+//     };
+//     return {
+//         get: function(url){
+//             return request('GET', url, null);
+//         },
+//         post: function(url, data){
+//             return request('POST', url, data);
+//         },
+//         put: function(url, data){
+//             return request('PUT', url, data);
+//         },
+//         delete: function(url, data){
+//             return request('DELETE', url, null);
+//         }
+//     };
+// })();
